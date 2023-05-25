@@ -8,7 +8,12 @@
 
 
 class Logger:
-    pass
+    def __init__(self, filename):
+        self.__filename = filename
+
+    def __call__(self, message):
+        with open(self.__filename, 'a') as f:
+            f.write(message + '\n')
 
 
 logger = Logger("log.txt")

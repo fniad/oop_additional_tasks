@@ -10,7 +10,31 @@
 
 
 class Fraction:
-    pass
+    def __init__(self, numerator, denominator):
+        self.numerator = numerator
+        self.denominator = denominator
+
+    def __repr__(self):
+        return f'{__class__.__name__}({self.numerator}, {self.denominator})'
+
+    def __str__(self):
+        return f'{self.numerator}/{self.denominator}'
+
+    def __add__(self, other):
+        """
+        Используется формула, по которой складываются дроби: a/b + c/d = (ad + bc) / bd
+        Находится НОД, чтобы сократить дроби"""
+        new_numerator = self.numerator * other.denominator + other.numerator * self.denominator
+        new_denominator = self.denominator * other.denominator
+        gcd_value = self.gcd(new_numerator, new_denominator)
+        return Fraction(new_numerator // gcd_value, new_denominator // gcd_value)
+
+    @staticmethod
+    def gcd(a, b):
+        """Нахождение НОД"""
+        while b != 0:
+            a, b = b, a % b
+        return a
 
 
 fraction1 = Fraction(1, 2)
