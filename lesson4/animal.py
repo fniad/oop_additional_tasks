@@ -14,15 +14,41 @@
 """
 
 
-class Aminal:
-    pass
+class Animal:
+    def __init__(self, name):
+        """Конструктор, принимающий имя животного"""
+        self.name = name
+
+    def speak(self):
+        """Метод, который выводит звук, издаваемый животным"""
+        return 'Звук животного'
 
 
-animal = Animal("Animal")
-animal.speak()  # ?
+class Dog(Animal):
+    def __init__(self, name):
+        super().__init__(name)
 
-dog = Dog("Dog")
-dog.speak()  # Woof!
+    def speak(self):
+        """Метод, который выводит звук, издаваемый собакой"""
+        return 'Woof!'
 
-cat = Cat("Cat")
-cat.speak()  # Meow!
+
+class Cat(Animal):
+    def __init__(self, name):
+        super().__init__(name)
+
+    def speak(self):
+        """Метод, который выводит звук, издаваемый кошкой"""
+        return 'Meow!'
+
+
+if __name__ == '__main__':
+
+    animal = Animal("Animal")
+    print(animal.speak())  # ?
+
+    dog = Dog("Dog")
+    print(dog.speak())  # Woof!
+
+    cat = Cat("Cat")
+    print(cat.speak())  # Meow!
