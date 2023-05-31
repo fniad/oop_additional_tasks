@@ -13,14 +13,37 @@
 
 
 class Person:
-    pass
+    def __init__(self, name, age):
+        """Конструктор, принимающий имя человека и его возраст"""
+        self.name = name
+        self.age = age
+
+    def get_name(self):
+        """Метод, который возвращает имя человека"""
+        return self.name
+
+    def get_age(self):
+        """Метод, который возвращает возраст человека"""
+        return self.age
 
 
-person = Person("Иван", 25)
-print(person.get_name())  # Иван
-print(person.get_age())  # 25
+class Student(Person):
+    def __init__(self, name, age, major):
+        """Конструктор, принимающий имя студента, его возраст и основной предмет"""
+        super().__init__(name, age)
+        self.major = major
 
-student = Student("Мария", 20, "математика")
-print(student.get_name())  # Мария
-print(student.get_age())  # 20
-print(student.get_major())  # математика
+    def get_major(self):
+        """Метод, который возвращает основной предмет студента"""
+        return self.major
+
+
+if __name__ == '__main__':
+    person = Person("Иван", 25)
+    print(person.get_name())  # Иван
+    print(person.get_age())  # 25
+
+    student = Student("Мария", 20, "математика")
+    print(student.get_name())  # Мария
+    print(student.get_age())  # 20
+    print(student.get_major())  # математика
