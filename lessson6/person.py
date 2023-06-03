@@ -14,13 +14,36 @@
 
 
 class Person:
-    pass
+    __slots__ = ('name', 'age')
+
+    def __init__(self):
+        self.name = 'name'
+        self.age = 0
+
+
+class Employee(Person):
+    __slots__ = ('salary', )
+
+    def __init__(self):
+        super().__init__()
+        self.salary = 0
+
+
+class Manager(Employee):
+    __slots__ = ('bonus', )
+
+    def __init__(self):
+        super().__init__()
+        self.bonus = 0
 
 
 person = Person()
 person.name = "John"
 person.age = 30
-person.salary = 5000  # raises AttributeError
+try:
+    person.salary = 5000  # raises AttributeError
+except AttributeError:
+    print('raises AttributeError')
 
 employee = Employee()
 employee.name = "Jane"
