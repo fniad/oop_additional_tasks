@@ -1,5 +1,5 @@
 """
-Напишите класс Shape, представляющий геометрическую фигуру, имеющий следующие методы:
+Напишите класс Shape, представляющий геометрическую фигуру, имеющей следующие методы:
 
 - __init__(self, name): конструктор, принимающий имя геометрической фигуры;
 - area(self): метод, который вычисляет площадь геометрической фигуры.
@@ -17,14 +17,45 @@
 
 
 class Shape:
-    pass
+    def __init__(self, name):
+        """Конструктор, принимающий имя геометрической фигуры"""
+        self.name = name
+
+    def area(self):
+        """Метод, который вычисляет площадь геометрической фигуры"""
+        return 0
 
 
-shape = Shape("Shape")
-print(shape.area())  # 0
+class Rectangle(Shape):
+    def __init__(self, name, width, height):
+        """Конструктор, принимающий имя прямоугольника, ширину и высоту"""
+        super().__init__(name)
+        self.width = width
+        self.height = height
 
-rect = Rectangle("Rectangle", 5, 10)
-print(rect.area())  # 50
+    def area(self):
+        """Метод, который вычисляет площадь прямоугольника"""
+        return self.height * self.width
 
-tri = Triangle("Triangle", 6, 4)
-print(tri.area())  # 12
+
+class Triangle(Shape):
+    def __init__(self, name, base, height):
+        """Конструктор, принимающий имя треугольника, основание и высоту"""
+        super().__init__(name)
+        self.base = base
+        self.height = height
+
+    def area(self):
+        """Метод, который вычисляет площадь треугольника"""
+        return (self.base * self.height) // 2
+
+
+if __name__ == '__main__':
+    shape = Shape("Shape")
+    print(shape.area())  # 0
+
+    rect = Rectangle("Rectangle", 5, 10)
+    print(rect.area())  # 50
+
+    tri = Triangle("Triangle", 6, 4)
+    print(tri.area())  # 12
